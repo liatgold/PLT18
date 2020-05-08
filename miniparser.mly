@@ -10,7 +10,7 @@ open Ast
 
 %token SEMI LPAREN RPAREN LBRACE RBRACE LCURLY RCURLY PLUS MINUS ASSIGN
 %token <int> LITERAL
-%token <int> 
+%token <char> CHLIT
 %token EOF
 
 %start program
