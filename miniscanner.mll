@@ -2,7 +2,7 @@
 (* Aaron Pickard *)
 (* This scanner logic and design was strongly influenced by the scanners
    in HW 2 - the ones the group members developed, as well as the solutions *)
-
+(*
 rule token = parse
   [' ' '\t' '\r' '\n'] { token lexbuf }
   | '+' { PLUS }
@@ -15,6 +15,8 @@ rule token = parse
   | ']' { RBRACE }
   | '{' { LCURLY }
   | '}' { RCURLY }
+  | '(' { LPAREN }
+  | ')' { RPAREN }
   | '!' { NOT }
   | '<' { LT }
   | '>' { GT }
@@ -30,3 +32,4 @@ rule lex_float = parse
     let f = lex_float buf in
     print_endline f
 }
+*)

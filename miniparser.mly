@@ -4,13 +4,13 @@
  * and the DeepSEA project's parser *)
  (* The design of this language was also influenced by the DeepSEA project's language
   definition, in the backend/phase/MiniC/Language.v file *)
+(*
 %{
 open Ast
 %}
 
 %token SEMI LPAREN RPAREN LBRACE RBRACE LCURLY RCURLY PLUS MINUS ASSIGN
 %token <int> LITERAL
-%token <char> CHLIT
 %token EOF
 
 %start program
@@ -112,3 +112,4 @@ args_opt:
 args:
         expr { [$1] }
         | expr COMMA arsgs { $1::$3 }
+*)
