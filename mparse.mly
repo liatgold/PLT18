@@ -7,6 +7,7 @@ open Ast
 %}
 
 %token SEMI LPAREN RPAREN LBRACE RBRACE PLUS MINUS ASSIGN
+%token TAB
 %token EQ NEQ LT AND OR
 %token IF ELSE WHILE INT BOOL
 /* return, COMMA token */
@@ -80,7 +81,7 @@ stmt:
   | LBRACE stmt_list RBRACE                 { Block $2 }
   /* if (condition) { block1} else {block2} */
   /* if (condition) stmt else stmt */
-  | IF LPAREN expr RPAREN stmt ELSE stmt    { If($3, $5, $7) }
+  | IF LPAREN expr RPAREN stmt              { If($3, $5, $7) }
   | WHILE LPAREN expr RPAREN stmt           { While ($3, $5)  }
   /* return */
   | RETURN expr SEMI                        { Return $2      }

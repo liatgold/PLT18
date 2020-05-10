@@ -8,13 +8,15 @@ let digit = ['0'-'9']
 let letter = ['a'-'z' 'A'-'Z']
 
 rule token = parse
-  [' ' '\t' '\r' '\n'] { token lexbuf } (* Whitespace *)
+  [' ' '\r'] { token lexbuf } (* Whitespace *)
 | "/*"     { comment lexbuf }           (* Comments *)
 | '('      { LPAREN }
 | ')'      { RPAREN }
 | '{'      { LBRACE }
 | '}'      { RBRACE }
 | ';'      { SEMI }
+| '\t'     { TAB }
+| '\n'     { EOL }
 (* COMMA *)
 | ','      { COMMA }
 | '+'      { PLUS }
