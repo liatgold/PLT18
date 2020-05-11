@@ -27,7 +27,7 @@ rule token = parse
 | "&&"     { AND }
 | "||"     { OR }
 | "if"     { IF }
-| "else"   { ELSE }
+(*| "else"   { ELSE }*)
 | "for"    { FOR }
 (* RETURN *)
 | "return" { RETURN }
