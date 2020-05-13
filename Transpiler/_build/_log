@@ -1,0 +1,56 @@
+### Starting build.
+# Target: transpiler.ml.depends, tags: { extension:ml, file:transpiler.ml, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep.opt -modules transpiler.ml > transpiler.ml.depends # cached
+# Target: miniparse.mly, tags: { extension:mly, file:miniparse.mly, infer, ocaml, ocamlyacc, parser, quiet }
+/usr/bin/ocamlyacc miniparse.mly # cached
+# Target: miniparse.mli.depends, tags: { extension:mli, file:miniparse.mli, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep.opt -modules miniparse.mli > miniparse.mli.depends # cached
+# Target: ast.ml.depends, tags: { extension:ml, file:ast.ml, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep.opt -modules ast.ml > ast.ml.depends # cached
+# Target: ast.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:ast.cmo, file:ast.ml, implem, ocaml, quiet }
+/usr/bin/ocamlc.opt -c -o ast.cmo ast.ml # cached
+# Target: miniparse.cmi, tags: { byte, compile, extension:mli, file:miniparse.mli, interf, ocaml, quiet }
+/usr/bin/ocamlc.opt -c -o miniparse.cmi miniparse.mli # cached
+# Target: sast.ml.depends, tags: { extension:ml, file:sast.ml, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep.opt -modules sast.ml > sast.ml.depends
+# Target: scanner.mll, tags: { extension:mll, file:scanner.mll, lexer, ocaml, ocamllex, quiet }
+/usr/bin/ocamllex.opt -q scanner.mll # cached
+# Target: scanner.ml.depends, tags: { extension:ml, file:scanner.ml, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep.opt -modules scanner.ml > scanner.ml.depends # cached
+# Target: scanner.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:scanner.cmo, file:scanner.ml, implem, ocaml, quiet }
+/usr/bin/ocamlc.opt -c -o scanner.cmo scanner.ml # cached
+# Target: semant.ml.depends, tags: { extension:ml, file:semant.ml, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep.opt -modules semant.ml > semant.ml.depends # cached
+# Target: sast.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:sast.cmo, file:sast.ml, implem, ocaml, quiet }
+/usr/bin/ocamlc.opt -c -o sast.cmo sast.ml
++ /usr/bin/ocamlc.opt -c -o sast.cmo sast.ml
+File "sast.ml", line 71, characters 49-157:
+Warning 8: this pattern-matching is not exhaustive.
+Here is an example of a case that is not matched:
+SExpr (_, _)
+# Target: semant.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:semant.cmo, file:semant.ml, implem, ocaml, quiet }
+/usr/bin/ocamlc.opt -c -o semant.cmo semant.ml # cached
+# Target: transpiler.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:transpiler.cmo, file:transpiler.ml, implem, ocaml, quiet }
+/usr/bin/ocamlc.opt -c -o transpiler.cmo transpiler.ml # cached
+# Target: miniparse.ml.depends, tags: { extension:ml, file:miniparse.ml, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep.opt -modules miniparse.ml > miniparse.ml.depends # cached
+# Target: ast.cmx, tags: { compile, extension:cmx, extension:ml, file:ast.cmx, file:ast.ml, implem, native, ocaml, quiet }
+/usr/bin/ocamlopt.opt -c -o ast.cmx ast.ml # cached
+# Target: miniparse.cmx, tags: { compile, extension:cmx, extension:ml, file:miniparse.cmx, file:miniparse.ml, implem, native, ocaml, quiet }
+/usr/bin/ocamlopt.opt -c -o miniparse.cmx miniparse.ml # cached
+# Target: scanner.cmx, tags: { compile, extension:cmx, extension:ml, file:scanner.cmx, file:scanner.ml, implem, native, ocaml, quiet }
+/usr/bin/ocamlopt.opt -c -o scanner.cmx scanner.ml # cached
+# Target: sast.cmx, tags: { compile, extension:cmx, extension:ml, file:sast.cmx, file:sast.ml, implem, native, ocaml, quiet }
+/usr/bin/ocamlopt.opt -c -o sast.cmx sast.ml
++ /usr/bin/ocamlopt.opt -c -o sast.cmx sast.ml
+File "sast.ml", line 71, characters 49-157:
+Warning 8: this pattern-matching is not exhaustive.
+Here is an example of a case that is not matched:
+SExpr (_, _)
+# Target: semant.cmx, tags: { compile, extension:cmx, extension:ml, file:semant.cmx, file:semant.ml, implem, native, ocaml, quiet }
+/usr/bin/ocamlopt.opt -c -o semant.cmx semant.ml # cached
+# Target: transpiler.cmx, tags: { compile, extension:cmx, extension:ml, file:transpiler.cmx, file:transpiler.ml, implem, native, ocaml, quiet }
+/usr/bin/ocamlopt.opt -c -o transpiler.cmx transpiler.ml # cached
+# Target: transpiler.native, tags: { dont_link_with, extension:native, file:transpiler.native, link, native, ocaml, program, quiet }
+/usr/bin/ocamlopt.opt ast.cmx miniparse.cmx sast.cmx scanner.cmx semant.cmx transpiler.cmx -o transpiler.native
+# Compilation successful.
