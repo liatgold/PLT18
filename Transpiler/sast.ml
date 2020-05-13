@@ -44,7 +44,7 @@ function main(a) -> result
 *)
 
 
-(* Pretty-printing functions *)
+(* Pretty-printing functions modified to print YUL *)
 let rec string_of_sexpr (t, e) =
   match e with
         SLiteral(l) -> string_of_int l
