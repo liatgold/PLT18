@@ -70,7 +70,7 @@ let rec string_of_sstmt = function
   ^ " { " ^ string_of_sexpr e3 ^ " } " ^ string_of_sstmt s
   | SWhile(e, s2) ->  let rec string_of_sstmt2 = function
                           SBlock(stmts) -> "\n" ^ String.concat "" (List.map string_of_sstmt stmts)  in 
-                          "for { } eq(0, 0) {  } {\n" ^ "if " ^ string_of_sexpr e ^ " { break }" ^ 
+                          "for { } eq(0, 0) {  } {\n" ^ "if " ^ "not(" ^ string_of_sexpr e ^ ")" ^ " { break }" ^ 
                           string_of_sstmt2 s2^ "}\n"
 
 let string_of_sfdecl fdecl =
