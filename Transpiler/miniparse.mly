@@ -5,7 +5,7 @@ open Ast
 %}
 
 %token SEMI LPAREN RPAREN LBRACE RBRACE PLUS MINUS TIMES DIV ASSIGN
-%token EQ NEQ LT AND OR
+%token EQ NEQ LT AND OR GT LTQ GTQ
 %token IF FOR INT BOOL
 /* return, COMMA token */
 %token RETURN COMMA
@@ -21,7 +21,7 @@ open Ast
 %left OR
 %left AND
 %left EQ NEQ
-%left LT
+%left LT GT LTQ GTQ
 %left PLUS MINUS
 %left TIMES DIV
 
@@ -97,6 +97,9 @@ expr:
   | expr LT     expr { Binop($1, Less,  $3)   }
   | expr AND    expr { Binop($1, And,   $3)   }
   | expr OR     expr { Binop($1, Or,    $3)   }
+  | expr GT	expr { Binop($1, Greater,$3)  }
+  | expr LTQ	expr { Binop($1, LessQ, $3)   }
+  | expr GTQ	expr { Binop($1, GreaterQ,$3) }
   | ID ASSIGN expr   { Assign($1, $3)         }
   | LPAREN expr RPAREN { $2                   }
   /* call */

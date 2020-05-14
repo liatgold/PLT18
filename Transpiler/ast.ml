@@ -1,7 +1,7 @@
 (* Abstract Syntax Tree and functions for printing it *)
 (*functions for printing AST have been modified to be a YUL transpiler by Gabriel Brown *)
 
-type op = Add | Sub | Mul | Div | Equal | Neq | Less | And | Or
+type op = Add | Sub | Mul | Div | Equal | Neq | Less | And | Or | Greater | LessQ | GreaterQ
 
 type typ = Int | Bool
 
@@ -47,6 +47,9 @@ let string_of_op = function
   | Less -> "lt"
   | And -> "and"
   | Or -> "or"
+  | Greater -> "gt"
+  | LessQ -> "ltq"
+  | GreaterQ -> "gtq"
 
 let rec string_of_expr = function
     Literal(l) -> string_of_int l
