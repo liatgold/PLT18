@@ -61,7 +61,7 @@ let rec string_of_sstmt = function
     SBlock(stmts) ->
     "{\n" ^ String.concat "" (List.map string_of_sstmt stmts) ^ "}\n"
   | SExpr(expr) -> string_of_sexpr expr ^ "\n"
-  | SReturn(expr) -> "result := " ^ string_of_sexpr expr ^ "\n"
+  | SReturn(expr) -> "result := " ^ string_of_sexpr expr ^ "\n" ^ "break\n"
   | SIf(e, s1) ->  "if " ^ string_of_sexpr e ^ "\n" ^
                        string_of_sstmt s1
   | SFor(e1,e2,e3,s) -> "for { " ^ string_of_sexpr e1 ^ "} " ^ string_of_sexpr e2
@@ -70,10 +70,10 @@ let rec string_of_sstmt = function
 let string_of_sfdecl fdecl =
   "function " ^
   fdecl.sfname ^ "(" ^ String.concat ", " (List.map snd fdecl.sformals) ^
-  ") -> result\n{\n" ^
+  ") -> result\n{\n" ^ "for {let  _i:=0} lt(_i, 1) {_i:=add(_i,1)  } {\n" ^
   String.concat "" (List.map string_of_vdecl fdecl.slocals) ^
   String.concat "" (List.map string_of_sstmt fdecl.sbody) ^
-  "}\n"
+  "}\n" ^ "}\n"
 
 let string_of_sprogram (vars, funcs) =
   "\n\nTranslation to YUL: \n\n" ^
