@@ -76,7 +76,7 @@ let string_of_typ = function
     Int -> "int"
   | Bool -> "bool"
 
-let string_of_vdecl (t, id) = "let " ^ id ^ "\n"
+let string_of_vdecl (t, id) = "let " ^ id ^ " := 0\n"
 
 let string_of_fdecl fdecl =
   string_of_typ fdecl.rtyp ^ " " ^

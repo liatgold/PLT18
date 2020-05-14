@@ -55,7 +55,6 @@ let rec string_of_sexpr (t, e) =
         string_of_op o ^ "(" ^ string_of_sexpr e1 ^ ", " ^ string_of_sexpr e2 ^ ")"
       | SAssign(v, e) -> v ^ " := " ^ string_of_sexpr e
       | SCall(f, el) ->
-
           f ^ "(" ^ String.concat ", " (List.map string_of_sexpr el) ^ ")"
 
 let rec string_of_sstmt = function
