@@ -70,10 +70,10 @@ let rec string_of_sstmt = function
 let string_of_sfdecl fdecl =
   "function " ^
   fdecl.sfname ^ "(" ^ String.concat ", " (List.map snd fdecl.sformals) ^
-  ") -> result\n{\n" ^ "for {let  _i:=0} lt(_i, 1) {_i:=add(_i,1)  } {\n" ^
+  ") -> result\n{\n" ^ "for {} eq(0,0) { } {\n" ^
   String.concat "" (List.map string_of_vdecl fdecl.slocals) ^
   String.concat "" (List.map string_of_sstmt fdecl.sbody) ^
-  "}\n" ^ "}\n"
+  "break\n}\n" ^ "}\n"
 
 let string_of_sprogram (vars, funcs) =
   "\n\nTranslation to YUL: \n\n" ^
